@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Adeeba</title>
+    <link rel="stylesheet" href="css/valentine.css" />
+    <link rel="stylesheet" href="css/date.css" />
+    <link rel="stylesheet" href="css/food.css" />
+    <link rel="stylesheet" href="css/dessert.css" />
+    <link rel="stylesheet" href="css/activities.css" />
+    <link rel="stylesheet" href="css/flower.css" />
+    
+    <style>
+        /* GLOBAL RESPONSIVE FIXES */
+        body {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            background-color: #fce4ec;
+            font-family: 'Arial', sans-serif;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px; /* Better spacing for mobile */
+            box-sizing: border-box;
+            text-align: center;
+            position: relative;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Responsive Grid for Food/Dessert/Activities */
+        .food-selection, .dessert-selection, .activities-selection {
+            display: grid !important; /* Overriding original flex if needed */
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px 0;
+            padding-bottom: 80px; /* Space for the "Continue" button */
+        }
+
+        /* Fix image sizes for consistency */
+        .food-item img, .dessert-item img, .activity-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        /* Navigation Buttons Styling */
+        .button, .nav-button, .answerButton {
+            z-index: 10;
+            margin: 10px;
+            padding: 15px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Specific fix for text slides */
+        .message-text {
+            font-size: clamp(1.2rem, 1vw, 2rem); /* Dynamic font size */
+            line-height: 1.4;
+            max-width: 90%;
+            color: #d81b60;
+            margin-bottom: 30px;
+        }
+
+        .message-text:nth-child(2){
+            font-size: clamp(.6rem, 1vw, .5rem);; /* Dynamic font size */
+            line-height: 1.4;
+            max-width: 90%;
+            color: #d81b60;
+            margin-bottom: 30px; 
+        }
+
+        /* Ensure the cat image doesn't blow up on mobile */
+        .responsive {
+            max-width: 100%;
+            height: auto;
+            max-height: 300px;
+        }
+
+        @media (min-width: 768px) {
+            .food-selection, .dessert-selection, .activities-selection {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section id="intro-slide">
+        <div class="message-text">
+            Adeeba I actually made this for you only, (with no prior tech expertise) please see it till end once.
+        </div>
+        <button class="nav-button" onclick="revealAndScroll('long-message-slide')">Next ❤️</button>
+    </section>
+
+    <section id="long-message-slide" class="hidden">
+        <div class="message-text">
+            Adeeba,
+I know this might feel a little early to come up with, but I thought, why not.
+
+Deep inside, I’m someone who feels a bit homeless, not even sure if I want to have a home for myself. But somehow, when I think about you, I do feel a wish to build a safe place around you, in your world, where I could belong in some way. I just want to have a place around you.
+
+Honestly, I feel jealous of the people who get to see you every day, while I haven’t even seen you once. I want to talk with you so much.
+
+I understand your situation and your conditioning too. I’m not better placed than you in any way. I will try understanding even better.
+
+There’s no rush at all we can take our time and see if this is worth going for. I can wait as long as you need to be sure about me. And truthfully, there’s nowhere else I’m trying to be.
+Dating isn’t something I’m desperate for. I’m looking at this with a long term perspective.
+
+I’m not smart enough to write something cheesy, so I’m just sharing what I genuinely think about you. 
+
+I am quite a sensitive and emotional person, and I know that sometimes ruins things for me, but I’m learning. And I’m willing to learn whatever is required to be better.
+
+If at any point you feel that this isn’t worth having, and you ask me nicely to stop, I will stop.
+
+Keeping in mind the differences between your world and mine, all I can say is that I do have hope, and I do wish to take this somewhere.
+So there’s something in the next slide that you need to answer to give this a start.
+
+Always wishing the best for you,
+with love.
+            <!-- I put a lot of thought into this because you're special to me... <br><br>
+            <b>I have something to ask too,</b> -->
+        </div>
+        <button class="nav-button" onclick="revealAndScroll('valentine-section')">Keep going...</button>
+    </section>
+
+    <section id="valentine-section" class="hidden">
+        <div id="valentineQuestion">
+            <b>Will you be my valentine?</b><br>
+            <span style="font-size: 0.7em;">Give me a day of yours,</span>
+        </div>
+        <div style="margin-top: 20px;">
+            <button class="answerButton" onclick="revealAndScroll('date-section')">Yes</button>
+            <button class="answerButton" id="noButton">I no no wanna o(╥﹏╥)o</button>
+        </div>
+        <img src="please.png" alt="cat asking question" class="responsive" style="margin-top: 20px;" />
+    </section>
+
+    <section id="date-section" class="hidden">
+        <h1>Are you free on ...</h1>
+        <div class="form-group">
+            <input type="date" id="datePicker" style="padding: 10px; border-radius: 10px; border: 1px solid #ff4081;" />
+            <br><br>
+            <button class="button" onclick="revealAndScroll('activities-section')">Submit Date</button>
+        </div>
+    </section>
+
+    <section id="activities-section" class="hidden">
+        <div id="activityquestion"><b>What will we be doing?</b></div>
+        <div class="activities-selection">
+            <div class="activity-item"><img src="activities/aquarium.jpeg" alt="aquarium" /><label><input type="checkbox" name="activities" value="aquarium" /> aquarium</label></div>
+            <div class="activity-item"><img src="activities/arcade.jpeg" alt="arcade" /><label><input type="checkbox" name="activities" value="arcade" /> arcade</label></div>
+            <div class="activity-item"><img src="activities/cinema.jpeg" alt="cinema" /><label><input type="checkbox" name="activities" value="cinema" /> cinema</label></div>
+            <div class="activity-item"><img src="activities/keramika.jpeg" alt="ceramics" /><label><input type="checkbox" name="activities" value="ceramics" /> ceramics</label></div>
+            <div class="activity-item"><img src="activities/kunsthalle.jpeg" alt="exhibition" /><label><input type="checkbox" name="activities" value="kunsthalle" /> exhibition</label></div>
+            <div class="activity-item"><img src="activities/park.jpeg" alt="park" /><label><input type="checkbox" name="activities" value="park.jpeg" /> park</label></div>
+        </div>
+        <button class="button" onclick="revealAndScroll('food-section')">Continue Hihihhh...</button>
+    </section>
+
+    <section id="food-section" class="hidden">
+        <div id="foodquestion"><b>What will we eat?</b></div>
+        <div class="food-selection">
+            <div class="food-item"><img src="food/burgers.jpeg" alt="Burgers" /><label><input type="checkbox" name="food" value="Burgers" /> burgers</label></div>
+            <div class="food-item"><img src="food/dog.jpeg" alt="hotdog" /><label><input type="checkbox" name="food" value="hotdog" /> hotdog</label></div>
+            <div class="food-item"><img src="food/koreanfood.jpeg" alt="koreanfood" /><label><input type="checkbox" name="food" value="Korean food" /> korean</label></div>
+            <div class="food-item"><img src="food/pasta.jpeg" alt="pasta" /><label><input type="checkbox" name="food" value="pasta" /> pasta</label></div>
+            <div class="food-item"><img src="food/pizza.jpeg" alt="pizza" /><label><input type="checkbox" name="food" value="pizza" /> pizza</label></div>
+            <div class="food-item"><img src="food/steak.jpeg" alt="steak" /><label><input type="checkbox" name="food" value="steak" /> steak</label></div>
+        </div>
+        <button class="button" onclick="revealAndScroll('dessert-section')">And dessert?</button>
+    </section>
+
+    <section id="dessert-section" class="hidden">
+        <div id="dessertquestion">Which dessert we eatin?</div>
+        <div class="dessert-selection">
+            <div class="dessert-item"><img src="food/boba.jpeg" alt="boba" /><label><input type="checkbox" name="dessert" value="boba" /> boba</label></div>
+            <div class="dessert-item"><img src="food/churro.jpeg" alt="churro" /><label><input type="checkbox" name="dessert" value="churro" /> churro</label></div>
+            <div class="dessert-item"><img src="food/che.jpeg" alt="che" /><label><input type="checkbox" name="dessert" value="che" /> che</label></div>
+            <div class="dessert-item"><img src="food/mochi.jpeg" alt="mochi" /><label><input type="checkbox" name="dessert" value="mochi" /> mochi</label></div>
+            <div class="dessert-item"><img src="food/taiyaki.jpeg" alt="taiyaki" /><label><input type="checkbox" name="dessert" value="taiyaki" /> taiyaki</label></div>
+        </div>
+        <button class="button" onclick="revealAndScroll('lastpage-section')">Finish ❤️</button>
+    </section>
+
+    <section id="lastpage-section" class="hidden">
+        <div id="thankyou"><b>Thank you for being my girlfriend</b></div>
+        <div class="flower">
+            <div class="f-wrapper">
+                <div class="flower__line"></div>
+                <div class="f">
+                    <div class="flower__leaf flower__leaf--1"></div>
+                    <div class="flower__leaf flower__leaf--2"></div>
+                    <div class="flower__leaf flower__leaf--3"></div>
+                    <div class="flower__leaf flower__leaf--4"></div>
+                    <div class="flower__leaf flower__leaf--5"></div>
+                    <div class="flower__leaf flower__leaf--6"></div>
+                    <div class="flower__leaf flower__leaf--7"></div>
+                    <div class="flower__leaf flower__leaf--8 flower__fall-down--yellow"></div>
+                </div>
+            </div>
+            <div class="flower__glass"></div>
+        </div>
+    </section>
+
+    <script>
+        function revealAndScroll(nextId) {
+            const next = document.getElementById(nextId);
+            next.classList.remove('hidden');
+            next.scrollIntoView({ behavior: 'smooth' });
+
+            if(nextId === 'lastpage-section') {
+                new Audio('congratulations.mp3').play();
+            }
+        }
+
+        document.getElementById("noButton").addEventListener("click", function () {
+          var yesBtn = document.querySelector('button[onclick*="date-section"]');
+          var currentSize = parseInt(window.getComputedStyle(yesBtn).fontSize);
+          yesBtn.style.fontSize = (currentSize + 10) + "px";
+        });
+    </script>
+</body>
+</html>
